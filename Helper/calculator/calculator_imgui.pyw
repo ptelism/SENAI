@@ -26,15 +26,29 @@ def clear():
     entry.delete(0, tk.END)
     result_calculated = False
 
+def delete_last_digit():
+    current_value = entry.get()
+    if current_value:
+        entry.delete(len(current_value) - 1)
+
 window = tk.Tk()
 window.title("Calculator : ptelism")
 window.configure(bg='black')
 
-entry = tk.Entry(window, font=('Arial', 24), borderwidth=2, relief='groove', bg='black', fg='white')
-entry.grid(row=0, column=0, columnspan=4, sticky='nsew', padx=10, pady=10)
+entry_frame = tk.Frame(window)
+entry_frame.grid(row=0, column=0, columnspan=4, sticky='nsew', padx=10, pady=5)
+
+entry = tk.Entry(entry_frame, font=('Arial', 18), borderwidth=2, relief='groove', bg='black', fg='white')  # Diminuindo a fonte
+entry.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+
+backspace_button = tk.Button(window, text="←", command=delete_last_digit, height=2, bg='black', fg='white')
+backspace_button.grid(row=0, column=3, sticky='nsew', padx=5, pady=5)
 
 for i in range(4):
     window.columnconfigure(i, weight=1)
+
+for i in range(1, 5):
+    window.rowconfigure(i, weight=1)
 
 window.rowconfigure(0, weight=1)
 
@@ -60,8 +74,5 @@ for button in buttons:
     if col > 3:
         col = 0
         row += 1
-
-for i in range(1, 5):
-    window.rowconfigure(i, weight=1) 
 
 window.mainloop()
