@@ -36,13 +36,13 @@ buttons = [
     '7', '8', '9', '/',
     '4', '5', '6', '*',
     '1', '2', '3', '-',
-    'C', '0', '=', '+'
+    'CL', '0', '=', '+'
 ]
 
 row = 1
 col = 0
 for button in buttons:
-    if button == 'C':
+    if button == 'CL':
         b = tk.Button(window, text=button, width=5, height=2, command=clear)
     elif button == '=':
         b = tk.Button(window, text=button, width=5, height=2, command=calculate)
