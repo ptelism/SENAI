@@ -19,7 +19,7 @@ def calculate():
     except Exception as e:
         entry.delete(0, tk.END)
         entry.insert(tk.END, "Error")
-        result_calculated = False
+        result_calculated = True
 
 def clear():
     global result_calculated
@@ -36,13 +36,13 @@ buttons = [
     '7', '8', '9', '/',
     '4', '5', '6', '*',
     '1', '2', '3', '-',
-    'CL', '0', '=', '+'
+    'C', '0', '=', '+'
 ]
 
 row = 1
 col = 0
 for button in buttons:
-    if button == 'CL':
+    if button == 'C':
         b = tk.Button(window, text=button, width=5, height=2, command=clear)
     elif button == '=':
         b = tk.Button(window, text=button, width=5, height=2, command=calculate)
