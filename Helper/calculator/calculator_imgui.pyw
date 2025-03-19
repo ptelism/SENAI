@@ -38,7 +38,7 @@ window.configure(bg='black')
 entry_frame = tk.Frame(window)
 entry_frame.grid(row=0, column=0, columnspan=4, sticky='nsew', padx=10, pady=5)
 
-entry = tk.Entry(entry_frame, font=('Arial', 18), borderwidth=2, relief='groove', bg='black', fg='white')  # Diminuindo a fonte
+entry = tk.Entry(entry_frame, font=('Arial', 18), borderwidth=2, relief='groove', bg='black', fg='white')
 entry.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
 
 backspace_button = tk.Button(window, text="←", command=delete_last_digit, height=2, bg='black', fg='white')
