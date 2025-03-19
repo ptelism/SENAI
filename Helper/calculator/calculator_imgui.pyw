@@ -28,31 +28,40 @@ def clear():
 
 window = tk.Tk()
 window.title("Calculator : ptelism")
+window.configure(bg='black')
 
-entry = tk.Entry(window, width=16, font=('Arial', 24), borderwidth=2, relief='groove')
-entry.grid(row=0, column=0, columnspan=4)
+entry = tk.Entry(window, font=('Arial', 24), borderwidth=2, relief='groove', bg='black', fg='white')
+entry.grid(row=0, column=0, columnspan=4, sticky='nsew', padx=10, pady=10)
+
+for i in range(4):
+    window.columnconfigure(i, weight=1)
+
+window.rowconfigure(0, weight=1)
 
 buttons = [
     '7', '8', '9', '/',
     '4', '5', '6', '*',
     '1', '2', '3', '-',
-    'C', '0', '=', '+'
+    'CL', '0', '=', '+'
 ]
 
 row = 1
 col = 0
 for button in buttons:
-    if button == 'C':
-        b = tk.Button(window, text=button, width=5, height=2, command=clear)
+    if button == 'CL':
+        b = tk.Button(window, text=button, command=clear, height=2, bg='black', fg='white')
     elif button == '=':
-        b = tk.Button(window, text=button, width=5, height=2, command=calculate)
+        b = tk.Button(window, text=button, command=calculate, height=2, bg='black', fg='white')
     else:
-        b = tk.Button(window, text=button, width=5, height=2, command=lambda v=button: click_button(v))
+        b = tk.Button(window, text=button, command=lambda v=button: click_button(v), height=2, bg='black', fg='white')
 
-    b.grid(row=row, column=col)
+    b.grid(row=row, column=col, sticky='nsew', padx=5, pady=5)
     col += 1
     if col > 3:
         col = 0
         row += 1
+
+for i in range(1, 5):
+    window.rowconfigure(i, weight=1) 
 
 window.mainloop()
